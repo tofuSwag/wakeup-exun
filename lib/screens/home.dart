@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:wakeup/configs/newsdata.dart';
 import 'package:wakeup/configs/palette.dart';
 
 import '../components/news.dart';
@@ -17,19 +18,42 @@ class _HomeScreenState extends State<HomeScreen> {
     Center(child: Text("You")),
   ];
 
+  final dataOfNews = NewsData(
+    author: "Jivansh Sharma",
+    description: "Blah Blah",
+    tag: "Poverty",
+    title: "Poverty, on the rise",
+    url: "https://jivansh.co",
+    imageUrl: "https://jivansh.co",
+  );
+
   @override
   Widget build(BuildContext context) {
+    final newsList = [
+      dataOfNews,
+      dataOfNews,
+      dataOfNews,
+      dataOfNews,
+      dataOfNews,
+      dataOfNews
+    ];
     final double screenHeight = MediaQuery.of(context).size.height;
     final double screenWidth = MediaQuery.of(context).size.width;
 
-    views[0] = News(
-        newsAuthor: "Jivansh Sharma",
-        newsTitle: "Poverty, on the rise",
-        newsTag: "Poverty",
-        screenHeight: screenHeight,
-        screenWidth: screenWidth,
-      );
+    final listBoy = ListView.builder(
+      itemCount: newsList.length,
+      itemBuilder: (context, index) {
+        return News(
+          newsAuthor: newsList[index].author,
+          newsTag: newsList[index].tag,
+          newsTitle: newsList[index].title,
+          screenHeight: screenHeight,
+          screenWidth: screenWidth,
+        );
+      },
+    );
 
+    views[0] = listBoy;
 
     return Scaffold(
       backgroundColor: Palette.scaffold,
