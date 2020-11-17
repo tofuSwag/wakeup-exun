@@ -26,7 +26,7 @@ class WakeUpApp extends StatelessWidget {
               headline2: TextStyle(
                   color: Palette.textColor,
                   fontFamily: "OSBold",
-                  fontSize: 25.0),
+                  fontSize: 20.0),
               bodyText1: TextStyle(
                   color: Palette.textColor,
                   fontFamily: "OSSemiBold",

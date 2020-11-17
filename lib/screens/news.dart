@@ -12,13 +12,18 @@ class _NewsPageState extends State<NewsPage> {
     return Scaffold(
       backgroundColor: Palette.textColor,
       appBar: AppBar(
+        leading: Padding(
+          padding: const EdgeInsets.fromLTRB(8.0,0,0,0),
+          child: Icon(Icons.public, size: 25.0),
+        ),
         centerTitle: true,
         elevation: 0,
         title: Text(
-          "Our Situation, Today.",
+          "Our Situation, Today",
           style: Theme.of(context).textTheme.headline2,
         ),
       ),
+      bottomNavigationBar: ,
     );
   }
 }
