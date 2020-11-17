@@ -4,15 +4,16 @@ import 'package:wakeup/configs/palette.dart';
 import 'screens/news.dart';
 
 void main() {
-  runApp(MyApp());
+  runApp(WakeUpApp());
 }
 
-class MyApp extends StatelessWidget {
+class WakeUpApp extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Flutter Demo',
+      title: 'Wake Up!',
+      debugShowCheckedModeBanner: false,
       theme: ThemeData(
           primaryColor: Palette.scaffold,
           accentColor: Palette.accent,
@@ -25,7 +26,7 @@ class MyApp extends StatelessWidget {
               headline2: TextStyle(
                   color: Palette.textColor,
                   fontFamily: "OSBold",
-                  fontSize: 65.0),
+                  fontSize: 25.0),
               bodyText1: TextStyle(
                   color: Palette.textColor,
                   fontFamily: "OSSemiBold",
