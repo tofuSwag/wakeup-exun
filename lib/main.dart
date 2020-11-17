@@ -18,6 +18,10 @@ class WakeUpApp extends StatelessWidget {
           accentColor: Palette.accent,
           primarySwatch: Colors.blue,
           textTheme: TextTheme(
+              caption: TextStyle(
+                  color: Palette.textColor,
+                  fontFamily: "OSBold",
+                  fontSize: 26.0),
               headline1: TextStyle(
                   color: Palette.textColor,
                   fontFamily: "OSExtraBold",
@@ -29,7 +33,7 @@ class WakeUpApp extends StatelessWidget {
               bodyText1: TextStyle(
                   color: Palette.textColor,
                   fontFamily: "OSSemiBold",
-                  fontSize: 40.0),
+                  fontSize: 15.0),
               subtitle1: TextStyle(
                   color: Palette.textColor,
                   fontFamily: "OSRegular",

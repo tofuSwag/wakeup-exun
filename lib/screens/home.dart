@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:wakeup/configs/palette.dart';
 
-import 'news.dart';
+import '../components/news.dart';
 
 class HomeScreen extends StatefulWidget {
   @override
@@ -9,20 +9,19 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomeScreenState extends State<HomeScreen> {
-  
   int _currentIndex = 0;
 
   final views = [
-    // News(),
+    //News(newsAuthor: "Jivansh",newsTitle: "Poverty on the rise", newsTag: "Poverty",),
     Center(child: Text("News")),
     Center(child: Text("Ammends")),
     Center(child: Text("You")),
   ];
 
-
-
   @override
   Widget build(BuildContext context) {
+    final double screenHeight = MediaQuery.of(context).size.height;
+    final double screenWidth = MediaQuery.of(context).size.width;
     return Scaffold(
       backgroundColor: Palette.scaffold,
       appBar: AppBar(
@@ -34,7 +33,7 @@ class _HomeScreenState extends State<HomeScreen> {
           children: [
             Icon(Icons.public, size: 25.0),
             Padding(
-              padding: const EdgeInsets.fromLTRB(14.0,0,0,0),
+              padding: const EdgeInsets.fromLTRB(14.0, 0, 0, 0),
               child: Text(
                 "Our Situation, Today",
                 style: Theme.of(context).textTheme.headline2,
@@ -43,7 +42,14 @@ class _HomeScreenState extends State<HomeScreen> {
           ],
         ),
       ),
-      body: views[_currentIndex],
+      // body: views[_currentIndex],
+      body: News(
+        newsAuthor: "Jivansh Sharma",
+        newsTitle: "Poverty, on the rise",
+        newsTag: "Poverty",
+        screenHeight: screenHeight,
+        screenWidth: screenWidth,
+      ),
       bottomNavigationBar: BottomNavigationBar(
         selectedItemColor: Palette.textColor,
         unselectedItemColor: Palette.textColor,
@@ -51,7 +57,8 @@ class _HomeScreenState extends State<HomeScreen> {
         backgroundColor: Palette.lightHint,
         showUnselectedLabels: false,
         iconSize: 35,
-        selectedLabelStyle: TextStyle(fontFamily: "OSExtraBold", fontSize: 13.0),
+        selectedLabelStyle:
+            TextStyle(fontFamily: "OSExtraBold", fontSize: 13.0),
         items: [
           BottomNavigationBarItem(
             icon: Icon(Icons.public),
