@@ -35,11 +35,15 @@ class WakeUpApp extends StatelessWidget {
                   color: Palette.textColor,
                   fontFamily: "OSSemiBold",
                   fontSize: 15.0),
+              bodyText2: TextStyle(
+                  color: Palette.textColor,
+                  fontFamily: "OSBold",
+                  fontSize: 15.0),
               subtitle1: TextStyle(
                   color: Palette.textColor,
                   fontFamily: "OSRegular",
                   fontSize: 35.0))),
-      home: BadNews(),
+      home: HomeScreen(),
     );
   }
 }

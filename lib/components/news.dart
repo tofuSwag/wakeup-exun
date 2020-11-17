@@ -51,11 +51,14 @@ class _NewsState extends State<News> {
     };
 
     return Card(
+      shape: RoundedRectangleBorder(
+        borderRadius: BorderRadius.circular(12.0),
+      ),
       margin: EdgeInsets.only(left: 40, right: 40, bottom: 10),
       color: Palette.cardBackground,
-      elevation: 1.0,
+      elevation: 0.0,
       child: InkWell(
-        onTap: ()=> print("$_newsTitle"),
+        onTap: () => print("$_newsTitle"),
         child: Container(
           height: _screenHeight / 9,
           width: _screenWidth,
@@ -75,16 +78,17 @@ class _NewsState extends State<News> {
                   Padding(
                     padding: const EdgeInsets.only(left: 5),
                     child:
-                        Text("Article By : $_newsAuthor", style: authorTheme),
+                        Text("Article By: $_newsAuthor", style: authorTheme),
                   ),
                   RaisedButton(
+                    elevation: 0.0,
                     shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(8.0),
                     ),
                     onPressed: () {},
                     color: tagColor[_newsTag],
                     textColor: Colors.white,
-                    child: Text("$_newsTag"),
+                    child: Text("$_newsTag", style: TextStyle(fontFamily: "OSBold"),),
                   ),
                 ],
               ),
