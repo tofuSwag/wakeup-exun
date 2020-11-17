@@ -37,18 +37,15 @@ class _HomeScreenState extends State<HomeScreen> {
         brightness: Brightness.light,
         centerTitle: true,
         elevation: 0,
-        title: Row(
-          mainAxisAlignment: MainAxisAlignment.center,
+        leading: Row(
           children: [
+            SizedBox(width: 30),
             Icon(Icons.public, size: 25.0),
-            Padding(
-              padding: const EdgeInsets.fromLTRB(14.0, 0, 0, 0),
-              child: Text(
-                "Our Situation, Today",
-                style: Theme.of(context).textTheme.headline2,
-              ),
-            ),
           ],
+        ),
+        title: Text(
+          "Our Situation, Today",
+          style: Theme.of(context).textTheme.headline2,
         ),
       ),
       body: views[_currentIndex],

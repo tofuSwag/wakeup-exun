@@ -80,7 +80,7 @@ class _NewsState extends State<News> {
                       ),
                     ),
                     height: _screenHeight / 27,
-                    width: _screenWidth / 14,
+                    width: _screenWidth / 18,
                     decoration: BoxDecoration(
                       color: Palette.accent,
                       borderRadius: BorderRadius.circular(8),
