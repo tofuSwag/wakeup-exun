@@ -42,12 +42,20 @@ class _NewsState extends State<News> {
   Widget build(BuildContext context) {
     final titleTheme = Theme.of(context).textTheme.caption;
     final authorTheme = Theme.of(context).textTheme.bodyText1;
+
+    final tagColor = {
+      "Water": Palette.water,
+      "Pollution": Palette.pollution,
+      "Poverty": Palette.poverty,
+      "India": Palette.india,
+    };
+
     return Card(
-      margin: EdgeInsets.all(20),
+      margin: EdgeInsets.all(40),
       color: Palette.cardBackground,
       elevation: 1.0,
       child: Container(
-        height: _screenHeight / 8,
+        height: _screenHeight / 9,
         width: _screenWidth,
         child: Column(
           children: [
@@ -59,35 +67,23 @@ class _NewsState extends State<News> {
                 ),
               ],
             ),
-            SafeArea(
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  Padding(
-                    padding: const EdgeInsets.only(left: 5),
-                    child:
-                        Text("Article By : $_newsAuthor", style: authorTheme),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                Padding(
+                  padding: const EdgeInsets.only(left: 5),
+                  child: Text("Article By : $_newsAuthor", style: authorTheme),
+                ),
+                RaisedButton(
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(8.0),
                   ),
-                  Container(
-                    child: Center(
-                      child: Text(
-                        "Water",
-                        style: TextStyle(
-                          fontFamily: "OSBold",
-                          fontSize: 17,
-                          color: Colors.white,
-                        ),
-                      ),
-                    ),
-                    height: _screenHeight / 27,
-                    width: _screenWidth / 18,
-                    decoration: BoxDecoration(
-                      color: Palette.accent,
-                      borderRadius: BorderRadius.circular(8),
-                    ),
-                  )
-                ],
-              ),
+                  onPressed: () {},
+                  color: tagColor[_newsTag],
+                  textColor: Colors.white,
+                  child: Text("$_newsTag"),
+                ),
+              ],
             ),
           ],
         ),

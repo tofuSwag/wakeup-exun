@@ -8,7 +8,7 @@ class Palette {
   static const Color accent = Color(0xffFF9062);
   static const Color hint = Color(0xff84B7B6);
   static const Color lightHint = Color(0xffDAEFEF);
-  static const Color cardBackground = Color(0xffEDE8E0);
+  static const Color cardBackground = Color(0xffFFF9EF);
 
   // Article Tags
   static const Color poverty = Color(0xffEFCA58);
