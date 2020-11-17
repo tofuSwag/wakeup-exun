@@ -13,7 +13,8 @@ class _HomeScreenState extends State<HomeScreen> {
   int _currentIndex = 0;
 
   final views = [
-    News(),
+    // News(),
+    Center(child: Text("News")),
     Center(child: Text("Ammends")),
     Center(child: Text("You")),
   ];
@@ -23,19 +24,26 @@ class _HomeScreenState extends State<HomeScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Palette.textColor,
+      backgroundColor: Palette.scaffold,
       appBar: AppBar(
-        leading: Padding(
-          padding: const EdgeInsets.fromLTRB(8.0,0,0,0),
-          child: Icon(Icons.public, size: 25.0),
-        ),
+        brightness: Brightness.light,
         centerTitle: true,
         elevation: 0,
-        title: Text(
-          "Our Situation, Today",
-          style: Theme.of(context).textTheme.headline2,
+        title: Row(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            Icon(Icons.public, size: 25.0),
+            Padding(
+              padding: const EdgeInsets.fromLTRB(14.0,0,0,0),
+              child: Text(
+                "Our Situation, Today",
+                style: Theme.of(context).textTheme.headline2,
+              ),
+            ),
+          ],
         ),
       ),
+      body: views[_currentIndex],
       bottomNavigationBar: BottomNavigationBar(
         selectedItemColor: Palette.textColor,
         unselectedItemColor: Palette.textColor,
@@ -43,8 +51,7 @@ class _HomeScreenState extends State<HomeScreen> {
         backgroundColor: Palette.lightHint,
         showUnselectedLabels: false,
         iconSize: 35,
-        unselectedLabelStyle: TextStyle(fontFamily: "OSExtraBold", fontSize: 13.0),
-        selectedLabelStyle: TextStyle(fontFamily: "OSExtraBold", fontSize: 15.0),
+        selectedLabelStyle: TextStyle(fontFamily: "OSExtraBold", fontSize: 13.0),
         items: [
           BottomNavigationBarItem(
             icon: Icon(Icons.public),
