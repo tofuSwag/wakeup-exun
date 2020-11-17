@@ -12,8 +12,7 @@ class _HomeScreenState extends State<HomeScreen> {
   int _currentIndex = 0;
 
   final views = [
-    //News(newsAuthor: "Jivansh",newsTitle: "Poverty on the rise", newsTag: "Poverty",),
-    Center(child: Text("News")),
+    News(),
     Center(child: Text("Ammends")),
     Center(child: Text("You")),
   ];
@@ -22,6 +21,16 @@ class _HomeScreenState extends State<HomeScreen> {
   Widget build(BuildContext context) {
     final double screenHeight = MediaQuery.of(context).size.height;
     final double screenWidth = MediaQuery.of(context).size.width;
+
+    views[0] = News(
+        newsAuthor: "Jivansh Sharma",
+        newsTitle: "Poverty, on the rise",
+        newsTag: "Poverty",
+        screenHeight: screenHeight,
+        screenWidth: screenWidth,
+      );
+
+
     return Scaffold(
       backgroundColor: Palette.scaffold,
       appBar: AppBar(
@@ -42,14 +51,7 @@ class _HomeScreenState extends State<HomeScreen> {
           ],
         ),
       ),
-      // body: views[_currentIndex],
-      body: News(
-        newsAuthor: "Jivansh Sharma",
-        newsTitle: "Poverty, on the rise",
-        newsTag: "Poverty",
-        screenHeight: screenHeight,
-        screenWidth: screenWidth,
-      ),
+      body: views[_currentIndex],
       bottomNavigationBar: BottomNavigationBar(
         selectedItemColor: Palette.textColor,
         unselectedItemColor: Palette.textColor,
