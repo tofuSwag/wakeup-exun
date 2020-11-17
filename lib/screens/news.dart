@@ -7,6 +7,9 @@ class NewsPage extends StatefulWidget {
 }
 
 class _NewsPageState extends State<NewsPage> {
+  
+  int _currentIndex = 0;
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -23,7 +26,30 @@ class _NewsPageState extends State<NewsPage> {
           style: Theme.of(context).textTheme.headline2,
         ),
       ),
-      bottomNavigationBar: ,
+      bottomNavigationBar: BottomNavigationBar(
+        currentIndex: _currentIndex,
+        iconSize: 30,
+        backgroundColor: Palette.hint,
+        items: [
+          BottomNavigationBarItem(
+            icon: Icon(Icons.public),
+            title: Text("Repercusions"),
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.import_contacts),
+            title: Text("Repercusions"),
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.person),
+            title: Text("Repercusions"),
+          ),
+        ],
+        onTap: (index) {
+          setState(() {
+            _currentIndex = index;
+          });
+        },
+      ),
     );
   }
 }
