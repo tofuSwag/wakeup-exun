@@ -35,7 +35,11 @@ class _HomeScreenState extends State<HomeScreen> {
       dataOfNews,
       dataOfNews,
       dataOfNews,
-      dataOfNews
+      dataOfNews,
+      dataOfNews,
+      dataOfNews,
+      dataOfNews,
+      dataOfNews,
     ];
     final double screenHeight = MediaQuery.of(context).size.height;
     final double screenWidth = MediaQuery.of(context).size.width;
