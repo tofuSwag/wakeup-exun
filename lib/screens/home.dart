@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:wakeup/configs/newsdata.dart';
+import 'package:wakeup/configs/news_data.dart';
 import 'package:wakeup/configs/palette.dart';
 
 import '../components/news.dart';

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:wakeup/configs/palette.dart';
+import 'package:wakeup/screens/full_news.dart';
 import 'screens/home.dart';
 
 void main() {
@@ -38,7 +39,7 @@ class WakeUpApp extends StatelessWidget {
                   color: Palette.textColor,
                   fontFamily: "OSRegular",
                   fontSize: 35.0))),
-      home: HomeScreen(),
+      home: BadNews(),
     );
   }
 }
