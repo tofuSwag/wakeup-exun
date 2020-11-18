@@ -20,7 +20,7 @@ class NewsData {
       : title = json['title'],
         description = json['description'],
         author = json['author'],
-        tag = "Poverty",
+        tag = json['category'],
         url = json['url'],
         imageUrl = json['urlToImage'];
 }

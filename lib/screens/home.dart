@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:wakeup/configs/news_data.dart';
 import 'package:wakeup/configs/palette.dart';
+import 'package:wakeup/networking/networking.dart';
 
 import '../components/news.dart';
 
@@ -11,12 +12,29 @@ class HomeScreen extends StatefulWidget {
 
 class _HomeScreenState extends State<HomeScreen> {
   int _currentIndex = 0;
+  final _newtworkingService = NetworkingService();
+  List<NewsData> _newsDataList = [];
 
   final views = [
     News(),
     Center(child: Text("Ammends")),
     Center(child: Text("You")),
   ];
+
+  void _getNews() async {
+    final newsDataList = await _newtworkingService.getNewsDataFromApi();
+
+    setState(() {
+      this._newsDataList = newsDataList;
+    });
+  }
+
+  @override
+  void initState(){
+    super.initState();
+    _getNews();
+
+  }
 
   final dataOfNews = NewsData(
     author: "Jivansh Sharma",
@@ -45,12 +63,12 @@ class _HomeScreenState extends State<HomeScreen> {
     final double screenWidth = MediaQuery.of(context).size.width;
 
     final listBoy = ListView.builder(
-      itemCount: newsList.length,
+      itemCount: _newsDataList.length,
       itemBuilder: (context, index) {
         return News(
-          newsAuthor: newsList[index].author,
-          newsTag: newsList[index].tag,
-          newsTitle: newsList[index].title,
+          newsAuthor:  _newsDataList[index].author,
+          newsTag:  _newsDataList[index].tag,
+          newsTitle:  _newsDataList[index].title,
           screenHeight: screenHeight,
           screenWidth: screenWidth,
         );

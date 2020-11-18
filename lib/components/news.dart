@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:wakeup/configs/palette.dart';
+import 'package:wakeup/networking/networking.dart';
 import 'package:wakeup/screens/full_news.dart';
 
 class News extends StatefulWidget {
@@ -78,8 +79,7 @@ class _NewsState extends State<News> {
                 children: [
                   Padding(
                     padding: const EdgeInsets.only(left: 5),
-                    child:
-                        Text("Article By: $_newsAuthor", style: authorTheme),
+                    child: Text("Article By: $_newsAuthor", style: authorTheme),
                   ),
                   RaisedButton(
                     elevation: 0.0,
@@ -89,7 +89,10 @@ class _NewsState extends State<News> {
                     onPressed: () {},
                     color: tagColor[_newsTag],
                     textColor: Colors.white,
-                    child: Text("$_newsTag", style: TextStyle(fontFamily: "OSBold"),),
+                    child: Text(
+                      "$_newsTag",
+                      style: TextStyle(fontFamily: "OSBold"),
+                    ),
                   ),
                 ],
               ),

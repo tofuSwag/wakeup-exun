@@ -5,16 +5,9 @@ class ResponseFromRequest {
 
   List<NewsData> list;
 
-  factory ResponseFromRequest.fromJson(Map<String, dynamic> json) {
-    // if (json['list'] is List) {
-    //   final list = json['list'] as List;
-    //   final objectsList = list.cast<Map<String, dynamic>>();
-    //   final termsList = objectsList.map((e) => NewsData.fromJson(e));
-
-    //   return ResponseFromRequest(list: termsList.toList());
-    // }
-    final list = json['list'] as List;
-    final objectsList = list.cast<Map<String, dynamic>>();
+  factory ResponseFromRequest.fromJson(List<dynamic> json) {
+    //final list = json as List;
+    final objectsList = json.cast<Map<String, dynamic>>();
     final termsList = objectsList.map((e) => NewsData.fromJson(e));
 
     return ResponseFromRequest(list: termsList.toList());
