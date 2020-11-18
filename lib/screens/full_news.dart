@@ -30,10 +30,9 @@ class BadNews extends StatelessWidget {
           return <Widget>[
             SliverAppBar(
               elevation: 0.0,
-              toolbarHeight: 50,
               primary: true,
               pinned: true,
-              collapsedHeight: 70,
+              collapsedHeight: kToolbarHeight + 30,
               expandedHeight: 200,
               flexibleSpace: FlexibleSpaceBar(
                 centerTitle: true,
@@ -41,6 +40,7 @@ class BadNews extends StatelessWidget {
                 title: SABT(
                   child: Column(
                     children: [
+                      Padding(padding: EdgeInsets.only(top: kToolbarHeight)),
                       Text(
                         "$newsTitle",
                         style: titleTheme,
