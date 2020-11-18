@@ -30,23 +30,14 @@ class BadNews extends StatelessWidget {
           return <Widget>[
             SliverAppBar(
               elevation: 0.0,
+              toolbarHeight: 50,
               primary: true,
               pinned: true,
-              stretch: true,
-              stretchTriggerOffset: 150.0,
-              onStretchTrigger: () {
-                return;
-              },
               collapsedHeight: 70,
               expandedHeight: 200,
               flexibleSpace: FlexibleSpaceBar(
-                stretchModes: [
-                  StretchMode.zoomBackground,
-                  StretchMode.blurBackground,
-                  StretchMode.fadeTitle,
-                ],
-                titlePadding: EdgeInsets.fromLTRB(0, 2.0, 0, 2.0),
                 centerTitle: true,
+                titlePadding: EdgeInsets.only(top: 2, bottom: 2),
                 title: SABT(
                   child: Column(
                     children: [
