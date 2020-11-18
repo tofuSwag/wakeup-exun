@@ -47,7 +47,7 @@ class _NewsState extends State<News> {
 
     final tagColor = {
       "Water": Palette.water,
-      "Pollution": Palette.pollution,
+      "pollution": Palette.pollution,
       "Poverty": Palette.poverty,
       "India": Palette.india,
     };
@@ -70,7 +70,13 @@ class _NewsState extends State<News> {
                 children: [
                   Padding(
                     padding: const EdgeInsets.only(top: 10, left: 5),
-                    child: Text("$_newsTitle", style: titleTheme),
+                    child: Text(
+                      "$_newsTitle",
+                      style: titleTheme,
+                      overflow: TextOverflow.ellipsis,
+                      softWrap: false,
+                      maxLines: 1,
+                    ),
                   ),
                 ],
               ),
@@ -79,7 +85,11 @@ class _NewsState extends State<News> {
                 children: [
                   Padding(
                     padding: const EdgeInsets.only(left: 5),
-                    child: Text("Article By: $_newsAuthor", style: authorTheme),
+                    child: Text(
+                      "Article By: $_newsAuthor",
+                      style: authorTheme,
+                      overflow: TextOverflow.ellipsis,
+                    ),
                   ),
                   RaisedButton(
                     elevation: 0.0,

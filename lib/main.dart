@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:wakeup/configs/palette.dart';
 import 'package:wakeup/screens/full_news.dart';
-import 'package:wakeup/screens/home.dart';
 import 'configs/news_data.dart';
 
 void main() {
@@ -30,7 +29,10 @@ class WakeUpApp extends StatelessWidget {
         primarySwatch: Colors.blue,
         textTheme: TextTheme(
           headline3: TextStyle(
-              color: Palette.textColor, fontFamily: "OSBold", fontSize: 20.0),
+            color: Palette.textColor,
+            fontFamily: "OSBold",
+            fontSize: 22.0,
+          ),
           caption: TextStyle(
               color: Palette.textColor, fontFamily: "OSBold", fontSize: 26.0),
           headline1: TextStyle(
@@ -51,10 +53,10 @@ class WakeUpApp extends StatelessWidget {
               fontSize: 35.0),
         ),
       ),
-      // home: BadNews(
-      //   newsData: dataOfNews,
-      // ),
-      home: HomeScreen(),
+      home: BadNews(
+        newsData: dataOfNews,
+      ),
+      // home: HomeScreen(),
     );
   }
 }

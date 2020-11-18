@@ -32,26 +32,42 @@ class BadNews extends StatelessWidget {
               elevation: 0.0,
               primary: true,
               pinned: true,
-              expandedHeight: 300,
+              stretch: true,
+              stretchTriggerOffset: 150.0,
+              onStretchTrigger: () {
+                return;
+              },
+              collapsedHeight: 70,
+              expandedHeight: 200,
               flexibleSpace: FlexibleSpaceBar(
+                stretchModes: [
+                  StretchMode.zoomBackground,
+                  StretchMode.blurBackground,
+                  StretchMode.fadeTitle,
+                ],
                 titlePadding: EdgeInsets.fromLTRB(0, 2.0, 0, 2.0),
                 centerTitle: true,
                 title: SABT(
-                    child: Text(
-                  "$newsTitle",
-                  style: titleTheme,
-                )),
-                background: Column(
-                  children: [
-                    Image.network("$newsImageUrl", fit: BoxFit.cover),
-                    Container(
-                      color: Palette.scaffold,
-                      height: 100,
-                      width: screenWidth,
-                      child: Text("$newsTitle"),
-                    ),
-                  ],
+                  child: Column(
+                    children: [
+                      Text(
+                        "$newsTitle",
+                        style: titleTheme,
+                        overflow: TextOverflow.ellipsis,
+                      ),
+                      Text(
+                        "$newsAuthor",
+                        overflow: TextOverflow.ellipsis,
+                        style: TextStyle(
+                          color: Palette.authorColor,
+                          fontFamily: "OSBold",
+                          fontSize: 16,
+                        ),
+                      ),
+                    ],
+                  ),
                 ),
+                background: Image.network("$newsImageUrl", fit: BoxFit.cover),
               ),
             ),
           ];
@@ -59,24 +75,107 @@ class BadNews extends StatelessWidget {
         body: SingleChildScrollView(
           child: Column(
             children: [
-              Text("$newsAuthor"),
-              Text(
-                "$newsDescription",
-                style: dataTheme,
+              Padding(
+                padding: EdgeInsets.only(left: 20.0),
+                child: Column(
+                  children: [
+                    SizedBox(
+                      height: 10,
+                    ),
+                    Row(
+                      children: [
+                        Text(
+                          "$newsAuthor",
+                          overflow: TextOverflow.ellipsis,
+                          style: TextStyle(
+                              color: Palette.authorColor, fontFamily: "OSBold"),
+                        ),
+                      ],
+                    ),
+                    Row(
+                      children: [
+                        Text(
+                          "$newsTitle",
+                          style: titleTheme,
+                          overflow: TextOverflow.ellipsis,
+                        ),
+                      ],
+                    ),
+                    SizedBox(height: 20),
+                    Padding(
+                      padding: const EdgeInsets.only(right: 20.0),
+                      child: Text(
+                        "$newsDescription...",
+                        style: dataTheme,
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+              Padding(
+                padding: EdgeInsets.only(top: 15.0),
+              ),
+              FlatButton(
+                onPressed: () {},
+                child: Text(
+                  "Read More",
+                  style: TextStyle(
+                      fontFamily: "OSBold",
+                      color: Palette.authorColor,
+                      fontSize: 18),
+                ),
+              ),
+              Padding(
+                padding: EdgeInsets.only(top: 30),
+              ),
+              Padding(
+                padding: const EdgeInsets.only(right: 20.0),
+                child: Text(
+                  "To make a difference today:",
+                  style: TextStyle(fontFamily: "OSBold", fontSize: 18),
+                ),
+              ),
+              Padding(
+                padding: EdgeInsets.only(bottom: 10),
               ),
               Row(
+                mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  RaisedButton(
-                    elevation: 0.0,
-                    shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(8.0),
+                  SizedBox(
+                    width: screenWidth / 2.5,
+                    height: 35.0,
+                    child: RaisedButton(
+                      elevation: 0.0,
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(8.0),
+                      ),
+                      onPressed: () {},
+                      color: Palette.hint,
+                      textColor: Colors.white,
+                      child: Text(
+                        "Fix It",
+                        style: TextStyle(fontFamily: "OSBold", fontSize: 20),
+                      ),
                     ),
-                    onPressed: () {},
-                    color: Palette.hint,
-                    textColor: Colors.white,
-                    child: Text(
-                      "Volunteer",
-                      style: TextStyle(fontFamily: "OSBold"),
+                  ),
+                  SizedBox(
+                    width: 10,
+                  ),
+                  SizedBox(
+                    width: screenWidth / 2.5,
+                    height: 35.0,
+                    child: RaisedButton(
+                      elevation: 0.0,
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(8.0),
+                      ),
+                      onPressed: () {},
+                      color: Palette.accent,
+                      textColor: Colors.white,
+                      child: Text(
+                        "Help",
+                        style: TextStyle(fontFamily: "OSBold", fontSize: 20),
+                      ),
                     ),
                   ),
                 ],
