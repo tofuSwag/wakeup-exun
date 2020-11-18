@@ -1,5 +1,8 @@
+import 'dart:convert';
+
 import 'package:http/http.dart' as http;
 import 'package:wakeup/configs/news_data.dart';
+import 'package:wakeup/networking/response_request.dart';
 
 class NetworkingService {
   Future<List<NewsData>> getNewsDataFromApi() async {
@@ -14,6 +17,10 @@ class NetworkingService {
     final response = await http.get(uri);
 
     if (response.statusCode == 200) {
+      final decodedBody = jsonDecode(response.body);
+      final newsResponse = ResponseFromRequest.fromJson(decodedBody);
+      return newsResponse.list;
+
     } else {}
   }
 }
