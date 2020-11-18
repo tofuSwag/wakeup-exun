@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:wakeup/configs/palette.dart';
+import 'package:wakeup/screens/full_news.dart';
 
 class News extends StatefulWidget {
   final String newsTitle;
