@@ -64,30 +64,16 @@ class _HomeScreenState extends State<HomeScreen> {
     final double screenHeight = MediaQuery.of(context).size.height;
     final double screenWidth = MediaQuery.of(context).size.width;
 
-    // final listBoy = ListView.builder(
-    //   itemCount: _newsDataList.length,
-    //   itemBuilder: (context, index) {
-    //     return InkWell(
-    //       onTap: () {
-    //         _onTap(_newsDataList[index]);
-    //       },
-    //       child: News(
-    //         newsAuthor: _newsDataList[index].author,
-    //         newsTag: _newsDataList[index].tag,
-    //         newsTitle: _newsDataList[index].title,
-    //         screenHeight: screenHeight,
-    //         screenWidth: screenWidth,
-    //       ),
-    //     );
-    //   },
-    // );
-
     final listMan = FutureBuilder<List<NewsData>>(
         future: _getNews(),
         builder:
             (BuildContext context, AsyncSnapshot<List<NewsData>> snapshot) {
           if (snapshot.data == null) {
-            return Center(child: Text("wait"));
+            return Center(
+              child: CircularProgressIndicator(
+                valueColor: AlwaysStoppedAnimation<Color>(Palette.accent),
+              ),
+            );
           } else {
             var newsFromApi = snapshot.data;
             return ListView.builder(

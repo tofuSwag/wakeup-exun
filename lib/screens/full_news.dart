@@ -33,7 +33,7 @@ class BadNews extends StatelessWidget {
               elevation: 0.0,
               primary: true,
               pinned: true,
-              collapsedHeight: kToolbarHeight + 30,
+              collapsedHeight: 80,
               expandedHeight: 200,
               flexibleSpace: FlexibleSpaceBar(
                 centerTitle: true,
@@ -41,7 +41,7 @@ class BadNews extends StatelessWidget {
                 title: SABT(
                   child: Column(
                     children: [
-                      Padding(padding: EdgeInsets.only(top: kToolbarHeight)),
+                      Padding(padding: EdgeInsets.only(top: kToolbarHeight - 20)),
                       Text(
                         "$newsTitle",
                         style: titleTheme,
