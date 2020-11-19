@@ -1,4 +1,3 @@
-import 'package:wakeup/components/news.dart';
 
 class NewsData {
   NewsData(

@@ -3,6 +3,7 @@ import 'package:meta/meta.dart';
 import 'package:wakeup/configs/dissapear_app_bar.dart';
 import 'package:wakeup/configs/news_data.dart';
 import 'package:wakeup/configs/palette.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 class BadNews extends StatelessWidget {
   static final valueKey = ValueKey("BadNews");
@@ -112,7 +113,11 @@ class BadNews extends StatelessWidget {
                 padding: EdgeInsets.only(top: 15.0),
               ),
               FlatButton(
-                onPressed: () {},
+                onPressed: () async{
+                  if (await canLaunch(newsUrl) ){
+                    await launch(newsUrl);
+                  }
+                },
                 child: Text(
                   "Read More",
                   style: TextStyle(

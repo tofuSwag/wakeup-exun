@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:wakeup/configs/news_data.dart';
 import 'package:wakeup/configs/palette.dart';
 import 'package:wakeup/networking/networking.dart';
-import 'package:wakeup/screens/full_news.dart';
 
 import '../components/news.dart';
 
@@ -35,15 +34,6 @@ class _HomeScreenState extends State<HomeScreen> {
     Center(child: Text("Ammends")),
     Center(child: Text("You")),
   ];
-
-  final dataOfNews = NewsData(
-    author: "Jivansh Sharma",
-    description: "Blah Blah",
-    tag: "Poverty",
-    title: "Poverty, on the rise",
-    url: "https://jivansh.co",
-    imageUrl: "https://jivansh.co",
-  );
 
   @override
   Widget build(BuildContext context) {
