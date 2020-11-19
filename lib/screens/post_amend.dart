@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:geolocator/geolocator.dart';
 import 'package:wakeup/configs/palette.dart';
+import 'package:wakeup/configs/toastie.dart';
+import 'package:http/http.dart' as http;
 
 class PostAmend extends StatefulWidget {
   @override
@@ -26,6 +28,57 @@ class _PostAmendState extends State<PostAmend> {
     setState(() {
       _location = position;
     });
+  }
+
+  void postAndClear(name, url, amount, mission, description, location) async {
+    String orgName = name.text;
+    String orgUrl = url.text;
+    String orgAmount = amount.text;
+    String orgMission = mission.text;
+    String orgDescription = description.text;
+
+    if (orgName == "" ||
+        orgUrl == "" ||
+        orgAmount == "" ||
+        orgMission == "" ||
+        orgDescription == "") {
+      showToast(
+        "A field was left empty. Try again?",
+        gravity: Toastie.center,
+        duration: Toastie.lengthLong,
+      );
+      return;
+    }
+
+    final postUrl =
+        "https://wake-up-tofuswag.herokuapp.com/ammends/makeAmmend/";
+
+    final response = await http.post(postUrl, body: {
+      "name": orgName,
+      "homepageLink": orgUrl,
+      "baseUSDAmount": orgAmount,
+      "description": orgDescription,
+      "category": orgMission,
+    });
+    print(response.body);
+
+    if (response.body == "Ammend added to DB.") {
+      showToast(
+        "Thank you! We appriciate it :)",
+        gravity: Toastie.center,
+        duration: Toastie.lengthLong,
+      );
+    } else {
+      showToast(
+        "There was an error! Try Again ?",
+        gravity: Toastie.center,
+        duration: Toastie.lengthLong,
+      );
+    }
+  }
+
+  void showToast(String msg, {int duration, int gravity}) {
+    Toastie.show(msg, context, duration: duration, gravity: gravity);
   }
 
   @override
@@ -215,7 +268,10 @@ class _PostAmendState extends State<PostAmend> {
                 color: Palette.ammendBack,
                 child: Center(
                   child: InkWell(
-                    onTap:()=>null ,
+                    onTap: () {
+                      postAndClear(_orgName, _orgUrl, _orgAmount, _orgMission,
+                          _orgDescription, _location);
+                    },
                     child: Text(
                       "Submit",
                       style: TextStyle(
@@ -225,6 +281,22 @@ class _PostAmendState extends State<PostAmend> {
                     ),
                   ),
                 ),
+              ),
+            ),
+            SizedBox(
+              height: 30,
+            ),
+            Center(
+              child: Text(
+                "After a careful selection of the genuine organization, you can expect them to be in Ammends tab of this app!",
+                style: infoStyle,
+              ),
+            ),
+            Padding(
+              padding: const EdgeInsets.only(right: 30.0, left: 30.0),
+              child: Text(
+                "Share the message. Wake Up!",
+                style: infoStyle,
               ),
             ),
           ],
