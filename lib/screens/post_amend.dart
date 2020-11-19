@@ -292,7 +292,8 @@ class _PostAmendState extends State<PostAmend> {
             SizedBox(
               height: 30,
             ),
-            Center(
+            Padding(
+              padding: const EdgeInsets.only(right: 30.0, left: 30.0),
               child: Text(
                 "After a careful selection of the genuine organization, you can expect them to be in Ammends tab of this app!",
                 style: infoStyle,
