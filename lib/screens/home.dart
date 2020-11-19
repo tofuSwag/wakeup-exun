@@ -15,13 +15,11 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomeScreenState extends State<HomeScreen> {
-  List<NewsData> _newsDataList;
   ValueChanged<NewsData> _onTap;
   final _newtworkingService = NetworkingService();
 
   Future<List<NewsData>> _getNews() async {
     final newsDataList = await _newtworkingService.getNewsDataFromApi();
-    this._newsDataList = newsDataList;
     return newsDataList;
   }
 
@@ -49,18 +47,6 @@ class _HomeScreenState extends State<HomeScreen> {
 
   @override
   Widget build(BuildContext context) {
-    final newsList = [
-      dataOfNews,
-      dataOfNews,
-      dataOfNews,
-      dataOfNews,
-      dataOfNews,
-      dataOfNews,
-      dataOfNews,
-      dataOfNews,
-      dataOfNews,
-      dataOfNews,
-    ];
     final double screenHeight = MediaQuery.of(context).size.height;
     final double screenWidth = MediaQuery.of(context).size.width;
 
@@ -76,6 +62,7 @@ class _HomeScreenState extends State<HomeScreen> {
             );
           } else {
             var newsFromApi = snapshot.data;
+            newsFromApi.shuffle();
             return ListView.builder(
               itemCount: newsFromApi.length,
               itemBuilder: (BuildContext context, int index) {

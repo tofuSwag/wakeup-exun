@@ -77,6 +77,7 @@ class _NewsState extends State<News> {
             ),
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              mainAxisSize: MainAxisSize.max,
               children: [
                 Expanded(
                   child: Text(

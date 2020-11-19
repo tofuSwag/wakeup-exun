@@ -41,7 +41,9 @@ class BadNews extends StatelessWidget {
                 title: SABT(
                   child: Column(
                     children: [
-                      Padding(padding: EdgeInsets.only(top: kToolbarHeight - 20)),
+                      Padding(
+                          padding: EdgeInsets.only(
+                              top: kToolbarHeight - 20, left: 20)),
                       Text(
                         "$newsTitle",
                         style: titleTheme,
@@ -51,10 +53,7 @@ class BadNews extends StatelessWidget {
                         "$newsAuthor",
                         overflow: TextOverflow.ellipsis,
                         style: TextStyle(
-                          color: Palette.authorColor,
-                          fontFamily: "OSBold",
-                          fontSize: 16,
-                        ),
+                            color: Palette.authorColor, fontFamily: "OSBold"),
                       ),
                     ],
                   ),

@@ -36,7 +36,7 @@ class _WakeUpAppState extends State<WakeUpApp> {
         textTheme: TextTheme(
           headline3: TextStyle(
             color: Palette.textColor,
-            fontFamily: "OSBold",
+            fontFamily: "OSSemiBold",
             fontSize: 22.0,
           ),
           caption: TextStyle(
