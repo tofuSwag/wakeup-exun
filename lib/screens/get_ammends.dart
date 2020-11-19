@@ -7,12 +7,17 @@ import 'package:wakeup/configs/toastie.dart';
 import 'package:wakeup/networking/networking_ammends.dart';
 
 class Amends extends StatefulWidget {
+  final screenHeight;
+
+  const Amends({Key key, this.screenHeight}) : super(key: key);
   @override
   _AmendsState createState() => _AmendsState();
 }
 
 class _AmendsState extends State<Amends> {
+  var _screenHeight;
   final _newtworkingAmend = NetworkingAmmend();
+
   Future<List<AmendData>> _getAmends() async {
     final amendsDataList = await _newtworkingAmend.getAmendsDataFromApi();
     return amendsDataList;
@@ -22,6 +27,12 @@ class _AmendsState extends State<Amends> {
       TextStyle(fontFamily: "OSBold", fontSize: 13, color: Palette.authorColor);
   void showToast(String msg, {int duration, int gravity}) {
     Toastie.show(msg, context, duration: duration, gravity: gravity);
+  }
+
+  @override
+  void initState() {
+    super.initState();
+    _screenHeight = widget.screenHeight;
   }
 
   @override
@@ -39,7 +50,7 @@ class _AmendsState extends State<Amends> {
           } else {
             var amendsFromApi = snapshot.data;
             return Container(
-              height: 500,
+              height: _screenHeight,
               child: ListView.builder(
                 itemCount: amendsFromApi.length,
                 itemBuilder: (BuildContext context, int index) {
@@ -71,9 +82,20 @@ class _AmendsState extends State<Amends> {
     final double screenWidth = MediaQuery.of(context).size.width;
     return Column(
       children: [
-        Text(
-            "These are few ammends to make some wrongs right. While this wont fix all the damage we’ve done to mother earth, we need to remember ; Rome wasnt built in a day ",
-            style: infoStyle),
+        Padding(
+          padding: const EdgeInsets.only(
+            left: 30.0,
+            right: 30.0,
+          ),
+          child: Text(
+              "These are few ammends to make some wrongs right. While this wont fix all the damage we’ve done to mother earth, we need to remember ; Rome wasnt built in a day ",
+              style: infoStyle),
+        ),
+        Padding(
+          padding: const EdgeInsets.only(
+            bottom: 40.0,
+          ),
+        ),
         listMan,
       ],
     );

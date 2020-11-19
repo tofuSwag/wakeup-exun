@@ -79,6 +79,9 @@ class _HomeScreenState extends State<HomeScreen> {
         });
 
     views[0] = listMan;
+    views[1] = Amends(
+      screenHeight: screenHeight / 1.5,
+    );
 
     return Scaffold(
       backgroundColor: Palette.scaffold,
