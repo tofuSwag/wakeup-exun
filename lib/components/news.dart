@@ -66,14 +66,11 @@ class _NewsState extends State<News> {
           children: [
             Row(
               children: [
-                Padding(
-                  padding: const EdgeInsets.only(top: 10, left: 5),
+                Expanded(
                   child: Text(
                     "$_newsTitle",
                     style: titleTheme,
                     overflow: TextOverflow.ellipsis,
-                    softWrap: false,
-                    maxLines: 1,
                   ),
                 ),
               ],
@@ -81,8 +78,7 @@ class _NewsState extends State<News> {
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                Padding(
-                  padding: const EdgeInsets.only(left: 5),
+                Expanded(
                   child: Text(
                     "Article By: $_newsAuthor",
                     style: authorTheme,
