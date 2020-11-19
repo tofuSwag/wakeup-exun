@@ -1,58 +1,47 @@
 import 'package:flutter/material.dart';
 import 'package:wakeup/configs/palette.dart';
 
-class News extends StatefulWidget {
-  final String newsTitle;
-  final String newsAuthor;
-  final String newsTag;
-  final screenWidth;
-  final screenHeight;
+class AmendCard extends StatefulWidget {
+  final String title;
+  final String description;
+  final String type;
+  final int amount;
 
-  const News(
-      {Key key,
-      this.newsTitle,
-      this.newsAuthor,
-      this.newsTag,
-      this.screenWidth,
-      this.screenHeight})
+  const AmendCard(
+      {Key key, this.title, this.description, this.type, this.amount})
       : super(key: key);
 
   @override
-  _NewsState createState() => _NewsState();
+  _AmendCardState createState() => _AmendCardState();
 }
 
-class _NewsState extends State<News> {
-  String _newsTitle;
-  String _newsAuthor;
-  String _newsTag;
-  var _screenWidth;
-  var _screenHeight;
+class _AmendCardState extends State<AmendCard> {
+  String _title;
+  String _description;
+  String _type;
+  int _amount;
 
   @override
   void initState() {
     super.initState();
-    _newsTitle = widget.newsTitle;
-    _newsAuthor = widget.newsAuthor;
-    _newsTag = widget.newsTag;
-    _screenHeight = widget.screenHeight;
-    _screenWidth = widget.screenWidth;
+    _title = widget.title;
+    _description = widget.description;
+    _type = widget.type;
+    _amount = widget.amount;
   }
 
   @override
   Widget build(BuildContext context) {
     final titleTheme = Theme.of(context).textTheme.caption;
     final authorTheme = Theme.of(context).textTheme.bodyText1;
+    final double _screenHeight = MediaQuery.of(context).size.height;
+    final double _screenWidth = MediaQuery.of(context).size.width;
 
     final tagColor = {
-      "Water Scarcity": Palette.water,
-      "Pollution": Palette.pollution,
-      "Biodiversity Loss": Palette.biodiversity,
-      "Global Warming": Palette.global,
-      "Deforestation": Palette.deforestation,
-      "Food Waste": Palette.food,
-      "Climate change": Palette.climate,
+      "contribute": Palette.global,
+      "habit": Palette.food,
+      "campaign": Palette.climate,
     };
-
     return Card(
       shape: RoundedRectangleBorder(
         borderRadius: BorderRadius.circular(12.0),
@@ -61,7 +50,7 @@ class _NewsState extends State<News> {
       color: Palette.cardBackground,
       elevation: 0.0,
       child: Container(
-        height: _screenHeight / 9,
+        height: _screenHeight / 7,
         width: _screenWidth,
         child: Column(
           children: [
@@ -69,7 +58,7 @@ class _NewsState extends State<News> {
               children: [
                 Expanded(
                   child: Text(
-                    "$_newsTitle",
+                    "$_title",
                     style: titleTheme,
                     overflow: TextOverflow.ellipsis,
                   ),
@@ -82,8 +71,11 @@ class _NewsState extends State<News> {
               children: [
                 Expanded(
                   child: Text(
-                    "Article By: $_newsAuthor",
-                    style: authorTheme,
+                    "Min Donation: $_amount Dollars",
+                    style: TextStyle(
+                        color: Palette.authorColor,
+                        fontFamily: "OSBold",
+                        fontSize: 12),
                     overflow: TextOverflow.ellipsis,
                   ),
                 ),
@@ -93,11 +85,23 @@ class _NewsState extends State<News> {
                     borderRadius: BorderRadius.circular(8.0),
                   ),
                   onPressed: () {},
-                  color: tagColor[_newsTag],
+                  color: tagColor[_type],
                   textColor: Colors.white,
                   child: Text(
-                    "$_newsTag",
+                    "$_type".substring(0,1).toUpperCase() + "$_type".substring(1,"$_type".length),
                     style: TextStyle(fontFamily: "OSBold"),
+                  ),
+                ),
+              ],
+            ),
+            Row(
+              children: [
+                Expanded(
+                  child: Text(
+                    "$_description",
+                    style: TextStyle(
+                        color: Palette.textColor, fontFamily: "OSSemiBold"),
+                    overflow: TextOverflow.ellipsis,
                   ),
                 ),
               ],

@@ -4,6 +4,7 @@ import 'package:wakeup/configs/dissapear_app_bar.dart';
 import 'package:wakeup/configs/news_data.dart';
 import 'package:wakeup/configs/palette.dart';
 import 'package:url_launcher/url_launcher.dart';
+import 'package:wakeup/configs/toastie.dart';
 
 class BadNews extends StatelessWidget {
   static final valueKey = ValueKey("BadNews");
@@ -20,11 +21,18 @@ class BadNews extends StatelessWidget {
     final newsAuthor = newsData.author;
     final newsImageUrl = newsData.imageUrl;
     final newsUrl = newsData.url;
+    final volunteerLink = newsData.volunteerLink;
+    final donateLink = newsData.donateLink;
     final double screenHeight = MediaQuery.of(context).size.height;
     final double screenWidth = MediaQuery.of(context).size.width;
 
     final titleTheme = Theme.of(context).textTheme.caption;
     final dataTheme = Theme.of(context).textTheme.headline3;
+
+    void showToast(String msg, {int duration, int gravity}) {
+      Toastie.show(msg, context, duration: duration, gravity: gravity);
+    }
+
     return Scaffold(
       backgroundColor: Palette.scaffold,
       body: NestedScrollView(
@@ -155,7 +163,17 @@ class BadNews extends StatelessWidget {
                       shape: RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(8.0),
                       ),
-                      onPressed: () {},
+                      onPressed: () async {
+                        if (await canLaunch(donateLink)) {
+                          await launch(donateLink);
+                        } else {
+                          showToast(
+                            "Looks like one doesn't exist. Add one yourself on the You tab.",
+                            gravity: Toastie.center,
+                            duration: Toastie.lengthLong,
+                          );
+                        }
+                      },
                       color: Palette.hint,
                       textColor: Colors.white,
                       child: Text(
@@ -175,7 +193,17 @@ class BadNews extends StatelessWidget {
                       shape: RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(8.0),
                       ),
-                      onPressed: () {},
+                      onPressed: () async {
+                        if (await canLaunch(volunteerLink)) {
+                          await launch(volunteerLink);
+                        } else {
+                          showToast(
+                            "Looks like one doesn't exist. Add one yourself on the You tab.",
+                            gravity: Toastie.center,
+                            duration: Toastie.lengthLong,
+                          );
+                        }
+                      },
                       color: Palette.accent,
                       textColor: Colors.white,
                       child: Text(

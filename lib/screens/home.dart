@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:wakeup/configs/amend_data.dart';
 import 'package:wakeup/configs/news_data.dart';
 import 'package:wakeup/configs/palette.dart';
+import 'package:wakeup/networking/networking_ammends.dart';
+import 'package:wakeup/screens/get_ammends.dart';
 import 'package:wakeup/screens/post_amend.dart';
 import 'package:wakeup/networking/networking.dart';
 
@@ -32,7 +35,7 @@ class _HomeScreenState extends State<HomeScreen> {
   int _currentIndex = 0;
   final views = [
     News(),
-    Center(child: Text("Ammends")),
+    Amends(),
     PostAmend(),
   ];
 
