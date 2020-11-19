@@ -60,7 +60,6 @@ class _PostAmendState extends State<PostAmend> {
       "description": orgDescription,
       "category": orgMission,
     });
-    print(response.body);
 
     if (response.body == "Ammend added to DB.") {
       showToast(
@@ -68,6 +67,13 @@ class _PostAmendState extends State<PostAmend> {
         gravity: Toastie.center,
         duration: Toastie.lengthLong,
       );
+      setState(() {
+        _orgName.text = "";
+        _orgUrl.text = "";
+        _orgAmount.text = "";
+        _orgMission.text = "";
+        _orgDescription.text = "";
+      });
     } else {
       showToast(
         "There was an error! Try Again ?",
