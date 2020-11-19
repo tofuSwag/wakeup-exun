@@ -12,8 +12,12 @@ class Palette {
   static const Color authorColor = Color(0xff707075);
 
   // Article Tags
-  static const Color poverty = Color(0xffEFCA58);
+  static const Color pollution = Color(0xffEFCA58);
   static const Color water = Color(0xff70C2DF);
-  static const Color pollution = Color(0xff509BE1);
-  static const Color india = Color(0xffFF71B2);
+  static const Color deforestation = Color(0xff82985E);
+  static const Color climate = Color(0xff509BE1);
+  static const Color global = Color(0xffFF71B2);
+  static const Color food = Color(0xff7D80CA);
+  static const Color biodiversity = Color(0xff347E33);
 }
+

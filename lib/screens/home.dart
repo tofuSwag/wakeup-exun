@@ -67,6 +67,7 @@ class _HomeScreenState extends State<HomeScreen> {
               itemCount: newsFromApi.length,
               itemBuilder: (BuildContext context, int index) {
                 return InkWell(
+                  splashColor: Palette.scaffold,
                   onTap: () {
                     _onTap(newsFromApi[index]);
                   },

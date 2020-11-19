@@ -13,24 +13,9 @@ class NetworkingService {
     final path = "getNews";
 
     final uri = Uri.https(header, path);
-    print(uri);
-
-    print("this is working");
     final response = await http.get(uri);
-    print("this is not");
     final decodedBody = jsonDecode(response.body);
-    // print(decodedBody);
     final newsResponse = ResponseFromRequest.fromJson(decodedBody);
-    print("responded");
     return newsResponse.list;
-
-    // if (response.statusCode == 200) {
-    //   final decodedBody = jsonDecode(response.body);
-    //   final newsResponse = ResponseFromRequest.fromJson(decodedBody);
-    //   print("responded");
-    //   return newsResponse.list;
-    // } else {
-    //   print("oops");
-    // }
   }
 }

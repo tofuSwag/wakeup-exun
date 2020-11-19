@@ -46,10 +46,13 @@ class _NewsState extends State<News> {
     final authorTheme = Theme.of(context).textTheme.bodyText1;
 
     final tagColor = {
-      "Water": Palette.water,
+      "Water Scarcity": Palette.water,
       "Pollution": Palette.pollution,
-      "Poverty": Palette.poverty,
-      "India": Palette.india,
+      "Biodiversity Loss": Palette.biodiversity,
+      "Global Warming": Palette.global,
+      "Deforestation": Palette.deforestation,
+      "Food Waste": Palette.food,
+      "Climate change": Palette.climate,
     };
 
     return Card(
