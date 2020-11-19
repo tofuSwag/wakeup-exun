@@ -3,6 +3,7 @@ import 'package:url_launcher/url_launcher.dart';
 import 'package:wakeup/components/amend_card.dart';
 import 'package:wakeup/configs/amend_data.dart';
 import 'package:wakeup/configs/palette.dart';
+import 'package:wakeup/configs/toastie.dart';
 import 'package:wakeup/networking/networking_ammends.dart';
 
 class Amends extends StatefulWidget {
@@ -19,6 +20,9 @@ class _AmendsState extends State<Amends> {
 
   TextStyle infoStyle =
       TextStyle(fontFamily: "OSBold", fontSize: 13, color: Palette.authorColor);
+  void showToast(String msg, {int duration, int gravity}) {
+    Toastie.show(msg, context, duration: duration, gravity: gravity);
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -34,31 +38,34 @@ class _AmendsState extends State<Amends> {
             );
           } else {
             var amendsFromApi = snapshot.data;
-            return InkWell(child: AmendCard(
-              title: "hello",
-              description: "hahavjjvbjsbvsbkv this is tenjafbja aahfhajajn ",
-              type: "contribute",
-              amount: 5,
-            ));
-            // return Container(
-            //   height: 500,
-            //   child: ListView.builder(
-            //     itemCount: amendsFromApi.length,
-            //     itemBuilder: (BuildContext context, int index) {
-            //       return ListTile(
-            //         tileColor: Palette.cardBackground,
-            //         title: Text(amendsFromApi[index].title),
-            //         subtitle: Text(amendsFromApi[index].description),
-            //         onTap: () async {
-            //           var amendUrl = amendsFromApi[index].urlToTag;
-            //           if (await canLaunch(amendUrl)) {
-            //             await launch(amendUrl);
-            //           }
-            //         },
-            //       );
-            //     },
-            //   ),
-            // );
+            return Container(
+              height: 500,
+              child: ListView.builder(
+                itemCount: amendsFromApi.length,
+                itemBuilder: (BuildContext context, int index) {
+                  var link = amendsFromApi[index].link;
+                  return InkWell(
+                    onTap: () async {
+                      if (await canLaunch(link)) {
+                        await launch(link);
+                      } else {
+                        showToast(
+                          "Looks like there isn't a valid link. Add one yourself in the You tab.",
+                          gravity: Toastie.center,
+                          duration: Toastie.lengthLong,
+                        );
+                      }
+                    },
+                    child: AmendCard(
+                      title: amendsFromApi[index].title,
+                      amount: amendsFromApi[index].amount,
+                      description: amendsFromApi[index].description,
+                      type: amendsFromApi[index].type,
+                    ),
+                  );
+                },
+              ),
+            );
           }
         });
     final double screenWidth = MediaQuery.of(context).size.width;
