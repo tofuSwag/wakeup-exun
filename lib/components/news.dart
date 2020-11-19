@@ -47,7 +47,7 @@ class _NewsState extends State<News> {
 
     final tagColor = {
       "Water": Palette.water,
-      "pollution": Palette.pollution,
+      "Pollution": Palette.pollution,
       "Poverty": Palette.poverty,
       "India": Palette.india,
     };
@@ -59,55 +59,52 @@ class _NewsState extends State<News> {
       margin: EdgeInsets.only(left: 40, right: 40, bottom: 10),
       color: Palette.cardBackground,
       elevation: 0.0,
-      child: InkWell(
-        onTap: () => print("$_newsTitle"),
-        child: Container(
-          height: _screenHeight / 9,
-          width: _screenWidth,
-          child: Column(
-            children: [
-              Row(
-                children: [
-                  Padding(
-                    padding: const EdgeInsets.only(top: 10, left: 5),
-                    child: Text(
-                      "$_newsTitle",
-                      style: titleTheme,
-                      overflow: TextOverflow.ellipsis,
-                      softWrap: false,
-                      maxLines: 1,
-                    ),
+      child: Container(
+        height: _screenHeight / 9,
+        width: _screenWidth,
+        child: Column(
+          children: [
+            Row(
+              children: [
+                Padding(
+                  padding: const EdgeInsets.only(top: 10, left: 5),
+                  child: Text(
+                    "$_newsTitle",
+                    style: titleTheme,
+                    overflow: TextOverflow.ellipsis,
+                    softWrap: false,
+                    maxLines: 1,
                   ),
-                ],
-              ),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  Padding(
-                    padding: const EdgeInsets.only(left: 5),
-                    child: Text(
-                      "Article By: $_newsAuthor",
-                      style: authorTheme,
-                      overflow: TextOverflow.ellipsis,
-                    ),
+                ),
+              ],
+            ),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                Padding(
+                  padding: const EdgeInsets.only(left: 5),
+                  child: Text(
+                    "Article By: $_newsAuthor",
+                    style: authorTheme,
+                    overflow: TextOverflow.ellipsis,
                   ),
-                  RaisedButton(
-                    elevation: 0.0,
-                    shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(8.0),
-                    ),
-                    onPressed: () {},
-                    color: tagColor[_newsTag],
-                    textColor: Colors.white,
-                    child: Text(
-                      "$_newsTag",
-                      style: TextStyle(fontFamily: "OSBold"),
-                    ),
+                ),
+                RaisedButton(
+                  elevation: 0.0,
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(8.0),
                   ),
-                ],
-              ),
-            ],
-          ),
+                  onPressed: () {},
+                  color: tagColor[_newsTag],
+                  textColor: Colors.white,
+                  child: Text(
+                    "$_newsTag",
+                    style: TextStyle(fontFamily: "OSBold"),
+                  ),
+                ),
+              ],
+            ),
+          ],
         ),
       ),
     );

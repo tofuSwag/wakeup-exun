@@ -1,25 +1,31 @@
 import 'package:flutter/material.dart';
 import 'package:wakeup/configs/palette.dart';
 import 'package:wakeup/screens/full_news.dart';
+import 'package:wakeup/screens/home.dart';
 import 'configs/news_data.dart';
+import 'networking/networking.dart';
 
 void main() {
   runApp(WakeUpApp());
 }
 
-class WakeUpApp extends StatelessWidget {
+class WakeUpApp extends StatefulWidget {
+  @override
+  _WakeUpAppState createState() => _WakeUpAppState();
+}
+
+class _WakeUpAppState extends State<WakeUpApp> {
+  NewsData _selectedNews;
+
+  void onNewsTap(NewsData news) {
+    this.setState(() {
+      _selectedNews = news;
+      print(news);
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
-    final dataOfNews = NewsData(
-      author: "Jivansh Sharma",
-      description:
-          '''A former Microsoft software engineer from Ukraine has been sentenced to nine years in prison for stealing more than 10 million in store credit from Microsoft's online store. From 2016 to 2018, Volo''',
-      tag: "Poverty",
-      title: "Poverty, on the rise",
-      url: "https://jivansh.co",
-      imageUrl:
-          "https://cdn.pixabay.com/photo/2015/04/23/22/00/tree-736885__340.jpg",
-    );
     return MaterialApp(
       title: 'Wake Up!',
       debugShowCheckedModeBanner: false,
@@ -53,10 +59,24 @@ class WakeUpApp extends StatelessWidget {
               fontSize: 35.0),
         ),
       ),
-      home: BadNews(
-        newsData: dataOfNews,
+      home: Navigator(
+        pages: [
+          MaterialPage(
+            child: HomeScreen(
+              onTap: this.onNewsTap,
+            ),
+            key: ValueKey('home'),
+          ),
+          if (this._selectedNews != null)
+            MaterialPage(
+              child: BadNews(newsData: _selectedNews),
+              key: ValueKey('newsOpen'),
+            )
+        ],
+        onPopPage: (route, result) {
+          return route.didPop(result);
+        },
       ),
-      // home: HomeScreen(),
     );
   }
 }

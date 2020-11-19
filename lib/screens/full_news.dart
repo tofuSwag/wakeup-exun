@@ -5,6 +5,7 @@ import 'package:wakeup/configs/news_data.dart';
 import 'package:wakeup/configs/palette.dart';
 
 class BadNews extends StatelessWidget {
+  static final valueKey = ValueKey("BadNews");
   final NewsData newsData;
 
   const BadNews({Key key, @required this.newsData})
@@ -96,7 +97,7 @@ class BadNews extends StatelessWidget {
                     Padding(
                       padding: const EdgeInsets.only(right: 20.0),
                       child: Text(
-                        "$newsDescription...",
+                        "$newsDescription",
                         style: dataTheme,
                       ),
                     ),
