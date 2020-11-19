@@ -76,20 +76,25 @@ class BadNews extends StatelessWidget {
                     ),
                     Row(
                       children: [
-                        Text(
-                          "$newsAuthor",
-                          overflow: TextOverflow.ellipsis,
-                          style: TextStyle(
-                              color: Palette.authorColor, fontFamily: "OSBold"),
+                        Expanded(
+                          child: Text(
+                            "$newsAuthor",
+                            overflow: TextOverflow.ellipsis,
+                            style: TextStyle(
+                                color: Palette.authorColor,
+                                fontFamily: "OSBold"),
+                          ),
                         ),
                       ],
                     ),
                     Row(
                       children: [
-                        Text(
-                          "$newsTitle",
-                          style: titleTheme,
-                          overflow: TextOverflow.ellipsis,
+                        Expanded(
+                          child: Text(
+                            "$newsTitle",
+                            style: titleTheme,
+                            overflow: TextOverflow.ellipsis,
+                          ),
                         ),
                       ],
                     ),
