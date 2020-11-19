@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:wakeup/configs/news_data.dart';
 import 'package:wakeup/configs/palette.dart';
+import 'package:wakeup/screens/post_amend.dart';
 import 'package:wakeup/networking/networking.dart';
 
 import '../components/news.dart';
@@ -32,7 +33,7 @@ class _HomeScreenState extends State<HomeScreen> {
   final views = [
     News(),
     Center(child: Text("Ammends")),
-    Center(child: Text("You")),
+    PostAmend(),
   ];
 
   @override
@@ -88,10 +89,15 @@ class _HomeScreenState extends State<HomeScreen> {
             Icon(Icons.public, size: 25.0),
           ],
         ),
-        title: Text(
-          "Our Situation, Today",
-          style: Theme.of(context).textTheme.headline2,
-        ),
+        title: _currentIndex == 0
+            ? Text(
+                "Our Situation, Today",
+                style: Theme.of(context).textTheme.headline2,
+              )
+            : Text(
+                "How You Can Help",
+                style: Theme.of(context).textTheme.headline2,
+              ),
       ),
       body: views[_currentIndex],
       bottomNavigationBar: BottomNavigationBar(

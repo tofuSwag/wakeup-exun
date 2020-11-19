@@ -10,6 +10,9 @@ class Palette {
   static const Color lightHint = Color(0xffDAEFEF);
   static const Color cardBackground = Color(0xffFFF9EF);
   static const Color authorColor = Color(0xff707075);
+  static const Color editText = Color(0xff999288);
+
+  static const Color ammendBack = Color(0xffEFE6DA);
 
   // Article Tags
   static const Color pollution = Color(0xffEFCA58);

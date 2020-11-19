@@ -45,10 +45,15 @@ class BadNews extends StatelessWidget {
                       Padding(
                           padding: EdgeInsets.only(
                               top: kToolbarHeight - 20, left: 20)),
-                      Text(
-                        "$newsTitle",
-                        style: titleTheme,
-                        overflow: TextOverflow.ellipsis,
+                      Padding(
+                        padding: const EdgeInsets.only(left: 10.0),
+                        child: Expanded(
+                          child: Text(
+                            "$newsTitle",
+                            style: titleTheme,
+                            overflow: TextOverflow.ellipsis,
+                          ),
+                        ),
                       ),
                       Text(
                         "$newsAuthor",
@@ -113,8 +118,8 @@ class BadNews extends StatelessWidget {
                 padding: EdgeInsets.only(top: 15.0),
               ),
               FlatButton(
-                onPressed: () async{
-                  if (await canLaunch(newsUrl) ){
+                onPressed: () async {
+                  if (await canLaunch(newsUrl)) {
                     await launch(newsUrl);
                   }
                 },
