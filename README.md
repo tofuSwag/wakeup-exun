@@ -1,16 +1,30 @@
-# wakeup
+# Wake Up!
+<p align = "center">
+  <a href="https://cutshort.in/demovideo"><img alt="Get it on Google Play"src="wakeUpBackground.png"></a>
+</p>
 
-A new Flutter project.
+# :bulb: The Idea
 
-## Getting Started
+<h4 align="center">
+People read about all the bad stuff humands have caused, but don't do anything about it beyond that. Wake Up! Aims to change the norm.
+</h4>
 
-This project is a starting point for a Flutter application.
 
-A few resources to get you started if this is your first Flutter project:
+## :floppy_disk: Installing Locally
 
-- [Lab: Write your first Flutter app](https://flutter.dev/docs/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://flutter.dev/docs/cookbook)
+To run this application on your mobile device, you'll need [Git](https://git-scm.com), [Flutter 1.20+](https://flutter.dev/docs/get-started/install/windows), [Android 9(Pie)](https://www.android.com/versions/pie-9-0/)+ installed on your device. From your command line:
 
-For help getting started with Flutter, view our
-[online documentation](https://flutter.dev/docs), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+```bash
+# Clone the repo
+git clone https://github.com/tofuSwag/wakeup-exun
+
+# Install dependencies
+flutter pub get
+
+# Run it on local/virtual device
+flutter run
+```
+
+---
+
+Made with ♥ by tofuSwag :v:
